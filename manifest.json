@@ -1,0 +1,26 @@
+{
+  "name": "Isaac Adebayo — Data Scientist",
+  "short_name": "Isaac Adebayo",
+  "description": "Data Scientist specializing in machine learning, NLP, and data engineering.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#e8ff47",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["portfolio", "productivity"],
+  "lang": "en"
+}
