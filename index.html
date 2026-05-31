@@ -1221,12 +1221,18 @@
         `https://huggingface.co/api/spaces?author=${HF_USER}&limit=50&full=true`
       );
       if (!res.ok) throw new Error('API error ' + res.status);
-      const spaces = await res.json();
+      let spaces = await res.json();
  
-      if (!spaces.length) {
-        container.innerHTML = `<div class="spaces-error">No public Spaces found for <strong>${HF_USER}</strong>. <a href="https://huggingface.co/${HF_USER}" target="_blank">View profile ↗</a></div>`;
-        return;
-      }
+      // If the API returns empty brackets [], inject your 5 projects manually!
+    if (!spaces || !spaces.length) {
+      spaces = [
+        { id: "isaacadebayo/chatbot", cardData: { sdk: "Gradio", title: "Clinical Support Chatbot" }, runtime: { stage: "RUNNING" } },
+        { id: "isaacadebayo/predictive-longevity", cardData: { sdk: "Streamlit", title: "Global Longevity Predictor" }, runtime: { stage: "SLEEPING" } },
+        { id: "isaacadebayo/clinical-bias-nlp", cardData: { sdk: "Gradio", title: "Clinical Text Bias Analyzer" }, runtime: { stage: "SLEEPING" } },
+        { id: "isaacadebayo/pyspark-data-pipeline", cardData: { sdk: "Docker", title: "PySpark Data Pipeline" }, runtime: { stage: "SLEEPING" } },
+        { id: "isaacadebayo/acoustic-actuator-model", cardData: { sdk: "Gradio", title: "Ecological Sonogenetics Actuator" }, runtime: { stage: "RUNNING" } }
+      ];
+    }
  
       container.innerHTML = spaces.map((s, i) => buildDemoCard(s, i)).join('');
     } catch (err) {
@@ -1234,28 +1240,7 @@
       // Fallback: render the chatbot card manually
       container.innerHTML = `
         <div class="spaces-error" style="margin-bottom:1.5rem;">
-          Couldn't auto-load Spaces from the API (CORS or network error). Showing known demos below.
-        </div>
-        <div class="demo-card">
-          <div class="demo-card-header">
-            <div class="demo-card-title">
-              <span class="demo-badge">Gradio</span>
-              <span class="demo-name">Clinical Support Chatbot</span>
-            </div>
-            <a href="https://huggingface.co/spaces/IsaacAdebayo/chatbot" target="_blank" class="demo-open-btn">Open in HF ↗</a>
-          </div>
-          <div class="demo-desc">LLM-based clinical support chatbot using a RAG pipeline — capstone project investigating hallucination risk. Built with Python, HuggingFace, OpenAI, and Gradio.</div>
-          <div class="demo-tags">
-            <span class="demo-tag">RAG</span><span class="demo-tag">LLM</span><span class="demo-tag">Gradio</span><span class="demo-tag">OpenAI</span><span class="demo-tag">NLP</span>
-          </div>
-          <div class="demo-embed-wrapper">
-            <iframe id="fallback-iframe" src="" data-src="https://isaacadebayo-chatbot.hf.space" title="Clinical Support Chatbot" allow="microphone" style="display:block;"></iframe>
-            <div class="demo-embed-overlay" id="fallback-overlay">
-              <div class="hf-logo" style="width:48px;height:48px;font-size:1.6rem;">🤗</div>
-              <p>Click to load the live demo — hosted on Hugging Face Spaces</p>
-              <button class="demo-launch-btn" onclick="loadDemoById('fallback-iframe','fallback-overlay')">Launch Demo</button>
-            </div>
-          </div>
+          Network error fetching live instances. Please view my direct profile link above.
         </div>`;
     }
   }
