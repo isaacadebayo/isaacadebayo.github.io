@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Isaac Adebayo — Data Scientist</title>
-
+ 
 <!-- PWA -->
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#e8ff47">
@@ -13,19 +13,19 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Isaac Adebayo">
 <link rel="apple-touch-icon" href="icon-192.png">
-
+ 
 <!-- SEO -->
 <meta name="description" content="Data Scientist specializing in machine learning, NLP, and data engineering.">
 <meta name="author" content="Isaac Adebayo">
 <meta property="og:title" content="Isaac Adebayo — Data Scientist">
 <meta property="og:description" content="Data Scientist specializing in machine learning, NLP, and data engineering.">
 <meta property="og:type" content="website">
-
+ 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
   :root {
     --bg: #0a0a0f;
     --surface: #111118;
@@ -37,9 +37,9 @@
     --muted: #787880;
     --dim: #3a3a44;
   }
-
+ 
   html { scroll-behavior: smooth; }
-
+ 
   body {
     background: var(--bg);
     color: var(--text);
@@ -49,7 +49,7 @@
     min-height: 100vh;
     overflow-x: hidden;
   }
-
+ 
   /* grid lines bg */
   body::before {
     content: '';
@@ -62,7 +62,7 @@
     pointer-events: none;
     z-index: 0;
   }
-
+ 
   .wrapper {
     position: relative;
     z-index: 1;
@@ -70,7 +70,7 @@
     margin: 0 auto;
     padding: 0 2rem;
   }
-
+ 
   /* NAV */
   nav {
     position: sticky;
@@ -121,7 +121,7 @@
     transition: opacity 0.2s !important;
   }
   .nav-cta:hover { opacity: 0.85; color: var(--bg) !important; }
-
+ 
   /* HERO */
   #hero {
     padding: 7rem 0 5rem;
@@ -199,7 +199,7 @@
     transition: border-color 0.2s, color 0.2s, transform 0.15s;
   }
   .btn-outline:hover { border-color: var(--text); color: var(--text); transform: translateY(-1px); }
-
+ 
   .hero-stats {
     display: flex;
     gap: 3rem;
@@ -223,7 +223,7 @@
     text-transform: uppercase;
     margin-top: 0.2rem;
   }
-
+ 
   /* SECTION HEADER */
   .section-header {
     display: flex;
@@ -248,7 +248,7 @@
     height: 1px;
     background: var(--border);
   }
-
+ 
   h2 {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
@@ -256,7 +256,7 @@
     letter-spacing: -0.03em;
     margin-bottom: 3rem;
   }
-
+ 
   /* SKILLS */
   #skills { padding: 5rem 0; }
   .skills-grid {
@@ -297,7 +297,7 @@
     transition: color 0.2s, border-color 0.2s;
   }
   .skill-cell:hover .tag { color: var(--text); border-color: var(--dim); }
-
+ 
   /* EXPERIENCE */
   #experience { padding: 5rem 0; border-top: 1px solid var(--border); }
   .exp-list { display: flex; flex-direction: column; gap: 0; }
@@ -353,7 +353,7 @@
     padding: 0.2rem 0.6rem;
     border-radius: 3px;
   }
-
+ 
   /* PROJECTS */
   #projects { padding: 5rem 0; border-top: 1px solid var(--border); }
   .projects-grid {
@@ -402,7 +402,7 @@
     align-self: flex-end;
   }
   .project-card:hover .project-arrow { color: var(--accent); transform: translate(2px, -2px); }
-
+ 
   /* EDUCATION */
   #education { padding: 5rem 0; border-top: 1px solid var(--border); }
   .edu-item {
@@ -432,7 +432,7 @@
     border-radius: 3px;
     white-space: nowrap;
   }
-
+ 
   /* CONTACT */
   #contact {
     padding: 5rem 0 6rem;
@@ -485,7 +485,7 @@
     flex-shrink: 0;
   }
   .contact-link:hover .contact-link-icon { border-color: var(--accent); }
-
+ 
   .exp-github-link {
     display: inline-flex;
     align-items: center;
@@ -501,7 +501,7 @@
     transition: color 0.2s, border-color 0.2s;
   }
   .exp-github-link:hover { color: var(--text); border-color: var(--muted); }
-
+ 
   /* HUGGINGFACE DEMOS */
   #demos { padding: 5rem 0; border-top: 1px solid var(--border); }
   .hf-profile-bar {
@@ -554,7 +554,7 @@
     transition: background 0.2s, color 0.2s;
   }
   .hf-profile-link:hover { background: rgba(255,157,0,0.1); }
-
+ 
   .demo-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -657,7 +657,62 @@
     transition: opacity 0.2s;
   }
   .demo-launch-btn:hover { opacity: 0.85; }
-
+ 
+  /* SPACES LOADING */
+  .spaces-loading {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .spaces-loading-inner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .spaces-error {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .spaces-error a { color: #ff9d00; text-decoration: none; }
+  .spaces-error a:hover { text-decoration: underline; }
+  .demo-tags {
+    padding: 0.75rem 1.5rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .demo-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--accent2);
+    background: rgba(124,111,255,0.08);
+    border: 1px solid rgba(124,111,255,0.2);
+    padding: 0.2rem 0.55rem;
+    border-radius: 3px;
+  }
+  .demo-status {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+    border: 1px solid;
+  }
+  .demo-status.running { color: #4ade80; background: rgba(74,222,128,0.08); border-color: rgba(74,222,128,0.25); }
+  .demo-status.sleeping { color: var(--muted); background: transparent; border-color: var(--dim); }
+ 
   /* FOOTER */
   footer {
     border-top: 1px solid var(--border);
@@ -669,7 +724,7 @@
     color: var(--dim);
     font-family: 'JetBrains Mono', monospace;
   }
-
+ 
   /* ANIMATIONS */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
@@ -680,13 +735,13 @@
   .hero-bio { animation: fadeUp 0.5s 0.2s ease both; }
   .hero-actions { animation: fadeUp 0.5s 0.3s ease both; }
   .hero-stats { animation: fadeUp 0.5s 0.4s ease both; }
-
+ 
   @media (max-width: 640px) {
     .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
     .contact-box { flex-direction: column; padding: 2rem; }
     .nav-links { display: none; }
   }
-
+ 
   /* PWA INSTALL BANNER */
   #install-banner {
     display: none;
@@ -757,7 +812,7 @@
 </style>
 </head>
 <body>
-
+ 
 <nav>
   <div class="wrapper">
     <a class="nav-logo" href="#">AM_</a>
@@ -769,7 +824,7 @@
     </ul>
   </div>
 </nav>
-
+ 
 <section id="hero">
   <div class="wrapper">
     <p class="hero-label">Available for opportunities</p>
@@ -808,7 +863,7 @@
     </div>
   </div>
 </section>
-
+ 
 <section id="skills">
   <div class="wrapper">
     <div class="section-header">
@@ -866,7 +921,7 @@
     </div>
   </div>
 </section>
-
+ 
 <section id="experience">
   <div class="wrapper">
     <div class="section-header">
@@ -959,7 +1014,7 @@
     </div>
   </div>
 </section>
-
+ 
 <section id="education">
   <div class="wrapper">
       <div class="section-line"></div>
@@ -989,14 +1044,14 @@
     </div>
   </div>
 </section>
-
+ 
 <section id="demos">
   <div class="wrapper">
     <div class="section-header">
       <span class="section-tag">04 / Live Demos</span>
       <div class="section-line"></div>
     </div>
-
+ 
     <!-- HF Profile Bar -->
     <div class="hf-profile-bar">
       <div class="hf-profile-left">
@@ -1008,39 +1063,20 @@
       </div>
       <a href="https://huggingface.co/IsaacAdebayo" target="_blank" class="hf-profile-link">View Full Profile ↗</a>
     </div>
-
-    <!-- Chatbot Demo Card -->
-    <div class="demo-card">
-      <div class="demo-card-header">
-        <div class="demo-card-title">
-          <span class="demo-badge">Space</span>
-          <span class="demo-name">Clinical Support Chatbot</span>
-        </div>
-        <a href="https://huggingface.co/spaces/IsaacAdebayo/chatbot" target="_blank" class="demo-open-btn">Open in HF ↗</a>
-      </div>
-      <div class="demo-desc">
-        LLM-based chatbot using a RAG pipeline — capstone project investigating hallucination risk in a clinical assistant context. Built with Python, HuggingFace, OpenAI, and Gradio.
-      </div>
-      <div class="demo-embed-wrapper" id="chatbot-wrapper">
-        <iframe
-          id="chatbot-iframe"
-          src=""
-          data-src="https://isaacadebayo-chatbot.hf.space"
-          title="Clinical Support Chatbot"
-          allow="microphone"
-          style="display:block;"
-        ></iframe>
-        <div class="demo-embed-overlay" id="chatbot-overlay">
-          <div class="hf-logo" style="width:48px;height:48px;font-size:1.6rem;">🤗</div>
-          <p>Click to load the live demo — hosted on Hugging Face Spaces</p>
-          <button class="demo-launch-btn" onclick="loadDemo()">Launch Demo</button>
+ 
+    <!-- Dynamic Spaces Grid -->
+    <div id="spaces-container">
+      <div class="spaces-loading" id="spaces-loading">
+        <div class="spaces-loading-inner">
+          <div class="hf-logo" style="width:40px;height:40px;font-size:1.3rem;">🤗</div>
+          <span>Loading Spaces from Hugging Face…</span>
         </div>
       </div>
     </div>
-
+ 
   </div>
 </section>
-
+ 
 <section id="contact">
   <div class="wrapper">
     <div class="section-header">
@@ -1079,7 +1115,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- PWA Install Banner -->
 <div id="install-banner">
   <div class="install-text">
@@ -1091,23 +1127,142 @@
     <button id="dismiss-btn">Not now</button>
   </div>
 </div>
-
+ 
 <footer>
   <div class="wrapper">
     <p>© 2026 Isaac Adebayo — Built with HTML & CSS</p>
   </div>
 </footer>
-
+ 
 <script>
-  // Load HuggingFace demo on click
-  function loadDemo() {
-    const iframe = document.getElementById('chatbot-iframe');
-    const overlay = document.getElementById('chatbot-overlay');
-    iframe.src = iframe.dataset.src;
-    overlay.classList.add('hidden');
+  // ─── HuggingFace Spaces Loader ────────────────────────────────────────────
+  const HF_USER = 'IsaacAdebayo';
+ 
+  // Friendly descriptions for known spaces (keyed by repo id, lowercase)
+  const SPACE_META = {
+    'chatbot': {
+      desc: 'LLM-based clinical support chatbot using a RAG pipeline — capstone project investigating hallucination risk. Built with Python, HuggingFace, OpenAI, and Gradio.',
+      tags: ['RAG', 'LLM', 'Gradio', 'OpenAI', 'NLP']
+    }
+  };
+ 
+  function getSpaceMeta(spaceId) {
+    const key = spaceId.toLowerCase();
+    return SPACE_META[key] || { desc: '', tags: [] };
   }
-
-  // Register service worker
+ 
+  function slugToTitle(slug) {
+    return slug
+      .replace(/[-_]/g, ' ')
+      .replace(/\b\w/g, c => c.toUpperCase());
+  }
+ 
+  function buildDemoCard(space, index) {
+    const spaceId   = space.id.split('/')[1];
+    const title     = space.cardData?.title || slugToTitle(spaceId);
+    const hfUrl     = `https://huggingface.co/spaces/${space.id}`;
+    const embedUrl  = `https://${HF_USER.toLowerCase()}-${spaceId.toLowerCase()}.hf.space`;
+    const isRunning = space.runtime?.stage === 'RUNNING';
+    const sdkLabel  = space.cardData?.sdk || 'Space';
+    const meta      = getSpaceMeta(spaceId);
+    const desc      = space.cardData?.short_description || meta.desc || 'Interactive demo hosted on Hugging Face Spaces.';
+    const cardId    = `demo-card-${index}`;
+    const iframeId  = `iframe-${index}`;
+    const overlayId = `overlay-${index}`;
+    // collect tags: from cardData tags + our local tags
+    const rawTags   = [...(space.tags || []), ...meta.tags];
+    const tags      = [...new Set(rawTags)].filter(t =>
+      !['gradio','streamlit','region:us','license:mit','license:apache-2.0'].includes(t.toLowerCase())
+    ).slice(0, 8);
+ 
+    return `
+      <div class="demo-card" id="${cardId}">
+        <div class="demo-card-header">
+          <div class="demo-card-title">
+            <span class="demo-badge">${sdkLabel}</span>
+            <span class="demo-name">${title}</span>
+            <span class="demo-status ${isRunning ? 'running' : 'sleeping'}">${isRunning ? '● live' : '○ sleeping'}</span>
+          </div>
+          <a href="${hfUrl}" target="_blank" class="demo-open-btn">Open in HF ↗</a>
+        </div>
+        <div class="demo-desc">${desc}</div>
+        ${tags.length ? `<div class="demo-tags">${tags.map(t => `<span class="demo-tag">${t}</span>`).join('')}</div>` : ''}
+        <div class="demo-embed-wrapper">
+          <iframe
+            id="${iframeId}"
+            src=""
+            data-src="${embedUrl}"
+            title="${title}"
+            allow="microphone"
+            style="display:block;"
+          ></iframe>
+          <div class="demo-embed-overlay" id="${overlayId}">
+            <div class="hf-logo" style="width:48px;height:48px;font-size:1.6rem;">🤗</div>
+            <p>Click to load the live demo — hosted on Hugging Face Spaces</p>
+            <button class="demo-launch-btn" onclick="loadDemoById('${iframeId}','${overlayId}')">Launch Demo</button>
+          </div>
+        </div>
+      </div>`;
+  }
+ 
+  function loadDemoById(iframeId, overlayId) {
+    const iframe  = document.getElementById(iframeId);
+    const overlay = document.getElementById(overlayId);
+    if (iframe && !iframe.src) {
+      iframe.src = iframe.dataset.src;
+    }
+    if (overlay) overlay.classList.add('hidden');
+  }
+ 
+  async function loadSpaces() {
+    const container = document.getElementById('spaces-container');
+    try {
+      const res = await fetch(
+        `https://huggingface.co/api/spaces?author=${HF_USER}&limit=50&full=true`
+      );
+      if (!res.ok) throw new Error('API error ' + res.status);
+      const spaces = await res.json();
+ 
+      if (!spaces.length) {
+        container.innerHTML = `<div class="spaces-error">No public Spaces found for <strong>${HF_USER}</strong>. <a href="https://huggingface.co/${HF_USER}" target="_blank">View profile ↗</a></div>`;
+        return;
+      }
+ 
+      container.innerHTML = spaces.map((s, i) => buildDemoCard(s, i)).join('');
+    } catch (err) {
+      console.error('Failed to load Spaces:', err);
+      // Fallback: render the chatbot card manually
+      container.innerHTML = `
+        <div class="spaces-error" style="margin-bottom:1.5rem;">
+          Couldn't auto-load Spaces from the API (CORS or network error). Showing known demos below.
+        </div>
+        <div class="demo-card">
+          <div class="demo-card-header">
+            <div class="demo-card-title">
+              <span class="demo-badge">Gradio</span>
+              <span class="demo-name">Clinical Support Chatbot</span>
+            </div>
+            <a href="https://huggingface.co/spaces/IsaacAdebayo/chatbot" target="_blank" class="demo-open-btn">Open in HF ↗</a>
+          </div>
+          <div class="demo-desc">LLM-based clinical support chatbot using a RAG pipeline — capstone project investigating hallucination risk. Built with Python, HuggingFace, OpenAI, and Gradio.</div>
+          <div class="demo-tags">
+            <span class="demo-tag">RAG</span><span class="demo-tag">LLM</span><span class="demo-tag">Gradio</span><span class="demo-tag">OpenAI</span><span class="demo-tag">NLP</span>
+          </div>
+          <div class="demo-embed-wrapper">
+            <iframe id="fallback-iframe" src="" data-src="https://isaacadebayo-chatbot.hf.space" title="Clinical Support Chatbot" allow="microphone" style="display:block;"></iframe>
+            <div class="demo-embed-overlay" id="fallback-overlay">
+              <div class="hf-logo" style="width:48px;height:48px;font-size:1.6rem;">🤗</div>
+              <p>Click to load the live demo — hosted on Hugging Face Spaces</p>
+              <button class="demo-launch-btn" onclick="loadDemoById('fallback-iframe','fallback-overlay')">Launch Demo</button>
+            </div>
+          </div>
+        </div>`;
+    }
+  }
+ 
+  window.addEventListener('DOMContentLoaded', loadSpaces);
+ 
+  // ─── Service Worker ────────────────────────────────────────────────────────
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/sw.js')
@@ -1115,19 +1270,19 @@
         .catch(err => console.log('SW failed:', err));
     });
   }
-
-  // PWA install prompt
+ 
+  // ─── PWA Install Prompt ────────────────────────────────────────────────────
   let deferredPrompt;
   const installBanner = document.getElementById('install-banner');
-  const installBtn = document.getElementById('install-btn');
-  const dismissBtn = document.getElementById('dismiss-btn');
-
+  const installBtn    = document.getElementById('install-btn');
+  const dismissBtn    = document.getElementById('dismiss-btn');
+ 
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
     installBanner.style.display = 'flex';
   });
-
+ 
   installBtn?.addEventListener('click', async () => {
     if (!deferredPrompt) return;
     deferredPrompt.prompt();
@@ -1135,11 +1290,11 @@
     deferredPrompt = null;
     installBanner.style.display = 'none';
   });
-
+ 
   dismissBtn?.addEventListener('click', () => {
     installBanner.style.display = 'none';
   });
-
+ 
   window.addEventListener('appinstalled', () => {
     installBanner.style.display = 'none';
     deferredPrompt = null;
