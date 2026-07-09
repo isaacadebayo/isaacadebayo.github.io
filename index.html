@@ -1303,30 +1303,108 @@
   });
 
  // Chatbot code =============================================================
+</script>
+ <!-- Chat Bubble Button -->
+<div id="chat-bubble" onclick="toggleChat()" style="position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background-color: #0070f3; color: white; rounded-radius: 50%; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 9999; font-size: 24px;">
+  💬
+</div>
 
- async function askChatbot(userMessage) {
-  const vclEndpoint = 'https://chatbot-backend-tawny-nine.vercel.app/api/chat; // Replace with your actual Vercel URL
+<!-- Chat Window Wrapper -->
+<div id="chat-window" style="position: fixed; bottom: 90px; right: 20px; width: 350px; height: 450px; background: white; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.2); display: none; flex-direction: column; z-index: 9999; overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <!-- Header -->
+  <div style="background: #0070f3; color: white; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center;">
+    <span>AI Assistant</span>
+    <button onclick="toggleChat()" style="background: none; border: none; color: white; cursor: pointer; font-size: 16px;">✕</button>
+  </div>
+  
+  <!-- Messages Box -->
+  <div id="chat-messages" style="flex: 1; padding: 15px; overflow-y: auto; background: #f7f9fa; display: flex; flex-direction: column; gap: 10px;">
+    <div style="background: #e9ecef; color: #333; padding: 8px 12px; border-radius: 15px; max-width: 80%; align-self: flex-start; font-size: 14px;">
+      Hi there! How can I help you today?
+    </div>
+  </div>
+  
+  <!-- Input Bar -->
+  <div style="padding: 10px; border-top: 1px solid #eee; display: flex; gap: 8px; background: white;">
+    <input type="text" id="chat-input" placeholder="Type a message..." style="flex: 1; padding: 8px 12px; border: 1px solid #ddd; border-radius: 20px; outline: none; font-size: 14px;" onkeypress="if(event.key === 'Enter') sendChatMessage()">
+    <button onclick="sendChatMessage()" style="background: #0070f3; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 14px;">Send</button>
+  </div>
+</div>
+
+ <script>
+ // Toggle the Chat Window open/closed
+function toggleChat() {
+  const chatWindow = document.getElementById('chat-window');
+  if (chatWindow.style.display === 'none' || chatWindow.style.display === '') {
+    chatWindow.style.display = 'flex';
+  } else {
+    chatWindow.style.display = 'none';
+  }
+}
+
+// Handle gathering text and updating the screen UI
+async function sendChatMessage() {
+  const inputEl = document.getElementById('chat-input');
+  const messageBox = document.getElementById('chat-messages');
+  const userMessage = inputEl.value.trim();
+  
+  if (!userMessage) return;
+  
+  // 1. Clear input field
+  inputEl.value = '';
+  
+  // 2. Append User Message to UI
+  messageBox.innerHTML += `
+    <div style="background: #0070f3; color: white; padding: 8px 12px; border-radius: 15px; max-width: 80%; align-self: flex-end; font-size: 14px;">
+      ${userMessage}
+    </div>
+  `;
+  messageBox.scrollTop = messageBox.scrollHeight;
+
+  // 3. Append temporary "Thinking..." bubble
+  const typingId = 'typing-' + Date.now();
+  messageBox.innerHTML += `
+    <div id="${typingId}" style="background: #e9ecef; color: #777; padding: 8px 12px; border-radius: 15px; max-width: 80%; align-self: flex-start; font-size: 14px; font-style: italic;">
+      Thinking...
+    </div>
+  `;
+  messageBox.scrollTop = messageBox.scrollHeight;
+
+  // 4. Send network request to your Vercel Backend
+  const vclEndpoint = 'https://chatbot-backend-tawny-nine.vercel.app/api/chat'; 
 
   try {
     const response = await fetch(vclEndpoint, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message: userMessage })
     });
-
+    
     const data = await response.json();
     
+    // Remove "Thinking..." bubble
+    document.getElementById(typingId)?.remove();
+
     if (data.reply) {
-      console.log("AI says:", data.reply);
-      // Here you would run code to display data.reply in your website's chat UI box
+      // Append AI reply to UI
+      messageBox.innerHTML += `
+        <div style="background: #e9ecef; color: #333; padding: 8px 12px; border-radius: 15px; max-width: 80%; align-self: flex-start; font-size: 14px;">
+          ${data.reply}
+        </div>
+      `;
     } else {
-      console.error("Error from backend:", data.error);
+      throw new Error(data.error || 'Unknown error');
     }
   } catch (err) {
-    console.error("Failed to connect to backend:", err);
-  }
+    document.getElementById(typingId)?.remove();
+    messageBox.innerHTML += `
+      <div style="background: #f8d7da; color: #721c24; padding: 8px 12px; border-radius: 15px; max-width: 80%; align-self: flex-start; font-size: 14px;">
+        Sorry, I'm having trouble connecting right now.
+      </div>
+    `;
+    console.error("Backend Error:", err);
+  }  
+  messageBox.scrollTop = messageBox.scrollHeight;
 }
 // =======================================================================================
   dismissBtn?.addEventListener('click', () => { installBanner.style.display = 'none'; });
