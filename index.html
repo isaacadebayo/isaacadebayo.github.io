@@ -1302,8 +1302,35 @@
     installBanner.style.display = 'none';
   });
 
-  dismissBtn?.addEventListener('click', () => { installBanner.style.display = 'none'; });
-  window.addEventListener('appinstalled', () => { installBanner.style.display = 'none'; deferredPrompt = null; });
+ // Chatbot code =============================================================
+
+ async function askChatbot(userMessage) {
+  const vclEndpoint = 'https://your-project-name.vercel.app/api/chat'; // Replace with your actual Vercel URL
+
+  try {
+    const response = await fetch(vclEndpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ message: userMessage })
+    });
+
+    const data = await response.json();
+    
+    if (data.reply) {
+      console.log("AI says:", data.reply);
+      // Here you would run code to display data.reply in your website's chat UI box
+    } else {
+      console.error("Error from backend:", data.error);
+    }
+  } catch (err) {
+    console.error("Failed to connect to backend:", err);
+  }
+}
+// =======================================================================================
+dismissBtn?.addEventListener('click', () => { installBanner.style.display = 'none'; });
+window.addEventListener('appinstalled', () => { installBanner.style.display = 'none'; deferredPrompt = null; });
 </script>
 </body>
 </html>
