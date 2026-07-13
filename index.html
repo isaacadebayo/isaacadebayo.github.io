@@ -1231,6 +1231,8 @@
         const iframe = document.createElement('iframe');
         iframe.src = overlay.getAttribute('data-embed-url');
         iframe.loading = 'lazy';
+        iframe.allow = 'microphone; camera; autoplay; clipboard-write; encrypted-media; fullscreen';
+        iframe.setAttribute('allowfullscreen', '');
         wrapper.insertBefore(iframe, overlay);
         overlay.classList.add('hidden');
         overlay.removeEventListener('click', handler);
